@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { type BackEndUser } from '@/api/types';
 import { Button } from '@/components/ui/button';
 import { useEffect } from 'react';
+import { toast } from 'sonner';
 
 
 const formSchema = z.object({
@@ -29,6 +30,7 @@ type Props = {
 export default function UserProfileForm({ onSave, getUser }: Props) {
     const form = useForm<UserFormData>({
         defaultValues: {
+            email: '',
             name: '',
             address: '',
             city: '',
@@ -39,12 +41,15 @@ export default function UserProfileForm({ onSave, getUser }: Props) {
     function onSubmit(data: UserFormData) {
         onSave(data);
     }
+    const onInvalid = () => {
+        toast.error('Por favor, llena todos los campos requeridos');
+    }
     useEffect(() => {
         form.reset(getUser);
     }, [getUser, form])
     return (
         <Card>
-            <form id='user-profile-form' onSubmit={form.handleSubmit(onSubmit)}
+            <form id='user-profile-form' onSubmit={form.handleSubmit(onSubmit, onInvalid)}
                 className='space-y-4 bg-gray-50 rounded-lg md:pd-10'>
                 <CardHeader>
                     <CardTitle>

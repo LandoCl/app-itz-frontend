@@ -30,11 +30,9 @@ export function useCreateUser() {
     return useMutation({
         mutationFn: (user: User) => createUserRequest(user),
         onError: (err) => {
-            toast.error("Error al actualizar el usuario");
             console.log(err);
             throw new Error("Error al crear el usuario");
         }, onSuccess: (user) => {
-            toast.success("Perfil del usuario actualizado");
             console.log(user);
             queryClient.invalidateQueries({ queryKey: ["user"] });
         }
@@ -61,10 +59,12 @@ export function useUpdateUser() {
     return useMutation({
         mutationFn: (formData: UpdateUser) => updateUserRequest(formData),
         onError: (err) => {
+            toast.error("Error al actualizar el usuario");
             console.log(err);
             throw new Error("Error al actualizar el usuario")
         },
         onSuccess: (user) => {
+            toast.success("Perfil del usuario actualizado");
             console.log(user);
             queryClient.invalidateQueries({ queryKey: ["user"] });
         }
