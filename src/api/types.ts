@@ -38,3 +38,11 @@ export type Restaurante = {
   imageUrl: string
   lastUpdated: string
 }
+export type RestauranteSearchResponse = {
+  data: Restaurante[]
+  pagination: {
+    total: number
+    page: number
+    pages: number
+  }
+}
