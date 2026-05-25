@@ -25,9 +25,11 @@ export type UserFormData = z.infer<typeof formSchema>;
 type Props = {
     onSave: (userProfileData: UserFormData) => void;
     getUser: BackEndUser;
+    title?: string;
+    buttonText?: string;
 }
 
-export default function UserProfileForm({ onSave, getUser }: Props) {
+export default function UserProfileForm({ onSave, getUser, title = "Formulario de perfil del usuario", buttonText = "Actualizar" }: Props) {
     const form = useForm<UserFormData>({
         defaultValues: {
             email: '',
@@ -53,7 +55,7 @@ export default function UserProfileForm({ onSave, getUser }: Props) {
                 className='space-y-4 bg-gray-50 rounded-lg md:pd-10'>
                 <CardHeader>
                     <CardTitle>
-                        Perfil del usuario
+                        {title}
                     </CardTitle>
                     <CardDescription>
                         Consulta y cambia la informacion de tu perfil aqui
@@ -165,7 +167,7 @@ export default function UserProfileForm({ onSave, getUser }: Props) {
                 <CardFooter className='mt-4'>
                     <Field orientation='horizontal'>
                         <Button type='submit' form='user-profile-form' className='bg-orange-500 text-white'>
-                            Actualizar
+                            {buttonText}
                         </Button>
                     </Field>
                 </CardFooter>

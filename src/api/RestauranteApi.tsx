@@ -123,3 +123,19 @@ export const useSearchRestaurantes = (searchState: SearchState, city?: string) =
         enabled: !!city
     })
 }
+export const useGetRestauranteById = (restaurantId?: string) => {
+    const getRestauranteByIdRequest = async (): Promise<Restaurante> => {
+        const url = API_BASE_URL + '/api/restaurante/' + restaurantId
+
+        const response = await fetch(url)
+        if (!response.ok) {
+            throw new Error("Error al obtener el restaurante")
+        }
+        return response.json()
+    }
+    return useQuery({
+        queryKey: ['fetchRestaurant'],
+        queryFn: getRestauranteByIdRequest,
+        enabled: !!restaurantId
+    })
+}

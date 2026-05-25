@@ -46,3 +46,29 @@ export type RestauranteSearchResponse = {
     pages: number
   }
 }
+
+export type CartItem = {
+  _id: string
+  name: string
+  price: number
+  quantity: number
+}
+
+export type CheckOutSessionRequest = {
+  cartItems: {
+    menuItemId: string
+    name: string
+    quantity: string
+  }[]
+  deliveryDetails: {
+    email: string
+    name: string
+    address: string
+    city: string
+  }
+  restaurantId: string
+}
+
+export type CheckoutSessionResponse = {
+  url: string
+}
