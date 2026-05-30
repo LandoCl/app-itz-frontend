@@ -85,7 +85,7 @@ export default function DetailPage() {
     if (isLoading || !restaurante) return (<LoadingButton />)
     return (
         <div className="flex flex-col gap-10">
-            <AspectRatio ratio={16 / 5}>
+            <AspectRatio ratio={16 / 5} className="m-2 p-2 w-full max-w-4xl mx-auto">
                 <img src={restaurante.imageUrl} className="rounded-md object-cover h-full w-full" />
             </AspectRatio>
             <div className="grid md:grid-cols-[4fr_2fr] gap-5 md:px-32">
