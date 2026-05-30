@@ -16,7 +16,7 @@ export default function OrderStatusMessage({ status }: Props) {
     if (status === "paid")
         return (
             <div className="text-orange-500 text-2xl flex">
-                <FaCheckCircle className="mr-2" />
+                <FaClock className="mr-2" />
                 Esperando confirmacion del restaurante
             </div>
         )
@@ -43,7 +43,7 @@ export default function OrderStatusMessage({ status }: Props) {
         )
     return (
         <div className="text-red-500 text-2xl flex">
-            <FaCheckCircle className="mr-2" />
+            <FaTimesCircle className="mr-2" />
             Estado invalido
         </div>
     )

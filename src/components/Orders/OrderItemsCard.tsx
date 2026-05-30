@@ -16,6 +16,7 @@ export default function OrderItemsCard({ order }: Props) {
     const [status, setStatus] = useState<OrderStatus>(order.status)
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setStatus(order.status)
     }, [order.status])
 
