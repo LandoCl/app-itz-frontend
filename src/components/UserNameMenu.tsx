@@ -23,7 +23,7 @@ export default function UserNameMenu() {
                 </DropdownMenuItem>
                 <Separator></Separator>
                 <DropdownMenuItem>
-                    <Button className='flex flex-1 font-bold bg-orange-500' onClick={() => logout()}>Salir</Button>
+                    <Button className='flex flex-1 font-bold bg-orange-500' onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Salir</Button>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
